@@ -33,7 +33,7 @@ capture1 = cv2.VideoCapture(0)
 count = 0
 
 while True:
-    reference_image = cv2.imread('/Users/olinyoder/Desktop/asdf.jpeg')
+    reference_image = cv2.imread('PictureOfMe.jpeg')
     ret, imgVideo = capture1.read()
 
     if not ret:
