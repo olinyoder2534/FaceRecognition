@@ -8,7 +8,8 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 match = False
 
 # Matching function
-def is_image_match(imgVideo, reference_image, threshold=0.75):
+# Threshold = .55 works
+def is_image_match(imgVideo, reference_image, threshold=0.55):
     global match
 
     # Convert the live frame and reference image to grayscale for template matching
@@ -54,11 +55,11 @@ while True:
 
     for (x, y, w, h) in faces:
         # Draw a rectangle around the detected face
-        cv2.rectangle(imgVideo, (x, y), (x + w, y + h), (255, 255, 0), 2)
+        cv2.rectangle(imgVideo, (x, y), (x + w, y + h), (255, 255, 255), 2)
         roi_gray = gray[y:y + h, x:x + w]
         roi_color = imgVideo[y:y + h, x:x + w]
         if match:
-            cv2.putText(imgVideo, "Face is ME", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (255, 0, 0), 2)
+            cv2.putText(imgVideo, "Face is ME", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
         else:
             cv2.putText(imgVideo, "Face is NOT ME", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 0, 255), 2)
 
